@@ -1726,7 +1726,8 @@ def _mariadb_user_create(
             if host == "localhost":
                 qry += " IDENTIFIED VIA unix_socket"
             else:
-                log.error("Auth via unix_socket can be set only for host=localhost")
+                err = "Auth via unix_socket can be set only for host=localhost"
+                log.error(err)
                 __context__["mysql.error"] = err
                 qry = False
     else:
